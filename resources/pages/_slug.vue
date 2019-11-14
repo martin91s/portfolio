@@ -1,15 +1,21 @@
 <template>
-    <div class="homepage">
-        {{ content.title }}
-        {{ content.content }}
-    </div>
+    <section class="page-content">
+        <banner :image="content.banner" />
+        <b-container>
+            <h1>{{ content.title }}</h1>
+            <p>{{ content.content }}</p>
+        </b-container>
+    </section>
 </template>
 
 <script>
     import query from '../queries/generic-page.gql';
     import async from '../modules/async';
+    import Banner from '../components/Banner';
 
     export default {
+        components: { Banner },
+
         async asyncData(context) {
             try {
                 return await async(context, query, {
@@ -23,6 +29,7 @@
         computed: {
             /**
              * Returns the page content
+             *
              * @return {Object}
              */
             content() {
