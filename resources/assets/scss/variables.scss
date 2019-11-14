@@ -1,0 +1,7 @@
+$font-family-sans-serif: 'proxima-nova', Arial, sans-serif;
+
+$brand-default: #3178bb; // blue
+
+// Import libraries last so that we can override variables
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
