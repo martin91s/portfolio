@@ -1,17 +1,17 @@
 module.exports = {
     root: true,
+
     parserOptions: {
         'parser': 'babel-eslint',
     },
+
     env: {
         browser: true,
         node: true,
     },
+
     extends: '@netsells',
-    // required to lint *.vue files
-    // plugins: [
-    //     'html',
-    // ],
+
     // add your custom rules here
     rules: {
         // allow paren-less arrow functions
@@ -54,6 +54,7 @@ module.exports = {
             ],
         }],
     },
+
     globals: {
         use: true,
     },

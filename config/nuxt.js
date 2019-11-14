@@ -4,8 +4,11 @@ const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = {
     mode: 'universal',
+
     dev: process.env.NODE_ENV === 'development',
+
     srcDir: resolve(__dirname, '..', 'resources'),
+
     /*
      ** Headers of the page
      */
@@ -20,16 +23,19 @@ module.exports = {
             { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         ],
     },
+
     /*
      ** Customize the progress-bar color
      */
     loading: { color: '#fff' },
+
     /*
      ** Global CSS
      */
     css: [
         '@/assets/scss/app.scss',
     ],
+
     /*
      ** Plugins to load before mounting the App
      */
@@ -62,11 +68,13 @@ module.exports = {
             cacheProvider: 'memory'
         }],
     ],
+
     /*
      ** Axios module configuration
      ** See https://axios.nuxtjs.org/options
      */
     axios: {},
+
     /*
      ** Build configuration
      */
