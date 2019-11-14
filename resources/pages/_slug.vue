@@ -1,53 +1,55 @@
 <template>
-    <section>
-        <component
-            v-if="story.content.component"
-            :key="story.content._uid"
-            :blok="story.content"
-            :is="story.content.component"
-        />
-    </section>
+    <div class="homepage">
+        {{ content.title }}
+        {{ content.content }}
+    </div>
 </template>
 
 <script>
+    import query from '../queries/generic-page.gql';
+    import async from '../modules/async';
+
     export default {
-        data() {
-            return {
-                story: {
-                    content: {},
-                },
-            };
+        async asyncData(context) {
+            try {
+                return await async(context, query, {
+                    id: context.params.slug || 'home',
+                });
+            } catch (error) {
+                error({ statusCode: 404, message: 'Page not found'});
+            }
         },
 
-        asyncData(context) {
-            // Check if we are in the editor mode
-            const version = context.query._storyblok || context.isDev ? 'draft' : 'published';
-
-            // Load the JSON from the API
-            return context.app.$storyapi.get(`cdn/stories/${ context.params.slug || 'home' }`, {
-                version,
-            }).then((res) => {
-                return res.data;
-            }).catch((res) => {
-                context.error({ statusCode: res.response.status, message: res.response.data });
-            });
+        computed: {
+            /**
+             * Returns the page content
+             * @return {Object}
+             */
+            content() {
+                return this.page.content;
+            },
         },
 
         mounted() {
-            this.$storybridge.on(['input', 'published', 'change'], (event) => {
-                if (event.action === 'input') {
-                    if (event.story.id === this.story.id) {
-                        this.story.content = event.story.content;
+            this.storyblokChange();
+        },
+
+        methods: {
+            /**
+             * Live reload for visual editor
+             */
+            storyblokChange() {
+                this.$storybridge.on(['input', 'published', 'change'], (event) => {
+                    if (event.action === 'input') {
+                        if (event.story.id === this.page.id) {
+                            this.page.content = event.story.content;
+                        }
+                    } else {
+                        window.location.reload();
                     }
-                } else {
-                    window.location.reload();
-                }
-            });
-            console.log(this.$route.params.slug);
+                });
+            },
         },
     };
+
 </script>
-
-<style>
-
-</style>

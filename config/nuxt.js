@@ -63,6 +63,7 @@ module.exports = {
         // Doc: https://axios.nuxtjs.org/usage
         '@nuxtjs/axios',
         '@nuxtjs/style-resources',
+        '@nuxtjs/apollo',
         ['storyblok-nuxt', {
             accessToken: 'zgkba7WhLQwrJN83BHNKGQtt',
             cacheProvider: 'memory'
@@ -74,6 +75,12 @@ module.exports = {
      ** See https://axios.nuxtjs.org/options
      */
     axios: {},
+
+    apollo: {
+        clientConfigs: {
+            default: '../app/Apollo/NetworkInterfaces/default.js',
+        },
+    },
 
     /*
      ** Build configuration

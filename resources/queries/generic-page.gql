@@ -1,0 +1,16 @@
+query genericPage(
+    $id: ID!,
+) {
+    page: GenericpageItem(id: $id) {
+        id
+        content {
+            _editable
+            _uid
+            banner
+            component
+            content
+            image
+            title
+        }
+    }
+}
