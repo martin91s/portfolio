@@ -1,0 +1,69 @@
+@import "~bootstrap/scss/mixins/grid";
+@import "~bootstrap/scss/mixins/breakpoints";
+
+@mixin _make-gutter($gutter) {
+    padding-right: ($gutter / 2);
+    padding-left: ($gutter / 2);
+}
+
+@mixin _make-row($gutter: $grid-gutter-width) {
+    @include make-row();
+    margin-right: ($gutter / -2);
+    margin-left: ($gutter / -2);
+    > .col,
+    > [class^=col-],
+    > .col-auto {
+        @include _make-gutter($gutter);
+    }
+}
+
+@mixin _make-col-ready($gutter: $grid-gutter-width) {
+    position: relative;
+    // Prevent columns from becoming too narrow when at smaller grid tiers by
+    // always setting `width: 100%;`. This works because we use `flex` values
+    // later on to override this initial width.
+    width: 100%;
+    min-height: 1px; // Prevent collapsing
+    padding-right: ($gutter / 2);
+    padding-left: ($gutter / 2);
+}
+
+@mixin make-xs-column($width, $gutter: $grid-gutter-width) {
+    @include _make-col-ready($gutter);
+    @include media-breakpoint-up(xs) {
+        @include make-col($width);
+        @include _make-gutter($gutter);
+    }
+}
+
+@mixin make-sm-column($width, $gutter: $grid-gutter-width) {
+    @include _make-col-ready($gutter);
+    @include media-breakpoint-up(sm) {
+        @include make-col($width);
+        @include _make-gutter($gutter);
+    }
+}
+
+@mixin make-md-column($width, $gutter: $grid-gutter-width) {
+    @include _make-col-ready($gutter);
+    @include media-breakpoint-up(md) {
+        @include make-col($width);
+        @include _make-gutter($gutter);
+    }
+}
+
+@mixin make-lg-column($width, $gutter: $grid-gutter-width) {
+    @include _make-col-ready($gutter);
+    @include media-breakpoint-up(lg) {
+        @include make-col($width);
+        @include _make-gutter($gutter);
+    }
+}
+
+@mixin make-xl-column($width, $gutter: $grid-gutter-width) {
+    @include _make-col-ready($gutter);
+    @include media-breakpoint-up(xl) {
+        @include make-col($width);
+        @include _make-gutter($gutter);
+    }
+}

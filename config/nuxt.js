@@ -41,6 +41,9 @@ module.exports = {
      */
     plugins: [
         '~/plugins/components.js',
+        '~/plugins/filters',
+        { src: '~/plugins/vue-particles', ssr: false },
+        { src: '~/plugins/aos' },
     ],
 
     /**
@@ -64,6 +67,7 @@ module.exports = {
         '@nuxtjs/axios',
         '@nuxtjs/style-resources',
         '@nuxtjs/apollo',
+        '@nuxtjs/moment',
         ['storyblok-nuxt', {
             accessToken: 'zgkba7WhLQwrJN83BHNKGQtt',
             cacheProvider: 'memory'
@@ -86,6 +90,7 @@ module.exports = {
      ** Build configuration
      */
     build: {
+
         /*
          ** You can extend webpack config here
          */

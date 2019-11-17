@@ -2,14 +2,16 @@
     <div>
         <app-header />
         <nuxt/>
+        <app-footer />
     </div>
 </template>
 
 <script>
-    import AppHeader from '../components/AppHeader';
+    import AppHeader from '../components/layout/AppHeader';
+    import AppFooter from '../components/layout/AppFooter';
 
     export default {
-        components: { AppHeader },
+        components: { AppFooter, AppHeader },
     };
 </script>
 
