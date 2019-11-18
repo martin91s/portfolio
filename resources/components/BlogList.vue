@@ -2,7 +2,7 @@
     <section class="blog-list">
         <b-container>
             <b-row>
-                <blog-card v-for="i in 3" :key="i.id" />
+                <blog-card v-for="post in posts" :key="post.id" :post="post"/>
             </b-row>
         </b-container>
     </section>
@@ -15,6 +15,15 @@
         name: 'blog-list',
 
         components: { BlogCard },
+
+        props: {
+            posts: {
+                type: Array,
+                default() {
+                    return [];
+                },
+            },
+        },
     };
 </script>
 

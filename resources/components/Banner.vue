@@ -20,15 +20,27 @@
             />
         </client-only>
         <div v-aos class="title">
-            <h1>Hi, I'm Martin</h1>
-            <h4>I'm a Frontend Developer from Hull</h4>
+            <h1>
+                <page-heading :content="content" />
+            </h1>
         </div>
     </div>
 </template>
 
 <script>
+    import PageHeading from './PageHeading';
+
     export default {
         name: 'banner',
+
+        components: { PageHeading },
+
+        props: {
+            content: {
+                type: Object,
+                required: true,
+            },
+        },
     };
 </script>
 

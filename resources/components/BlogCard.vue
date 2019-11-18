@@ -1,16 +1,16 @@
 <template>
     <div class="blog-card">
         <div class="inner">
-            <div :style="{ backgroundImage: `url(${ image })` }" class="image" />
+            <div :style="{ backgroundImage: `url(${ post.content.image })` }" class="image" />
             <div class="content">
                 <time>
-                    {{ $moment().format('MMMM Do YYYY') }}
+                    {{ $moment(post.created_at).format('MMMM Do YYYY') }}
                 </time>
                 <div class="title">
-                    My first blog post
+                    {{ post.content.title }}
                 </div>
                 <div class="information">
-                    {{ text | truncate({ length: 75 }) }}
+                    {{ post.content.content | truncate({ length: 75 }) }}
                 </div>
             </div>
         </div>
@@ -21,11 +21,13 @@
     export default {
         name: 'blog-card',
 
-        data() {
-            return {
-                image: 'https://picsum.photos/id/1005/400/300',
-                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nulla lorem, hendrerit nec porttitor quis, posuere et ante. Quisque magna metus, viverra vitae congue vel, luctus vel orci. Aliquam erat volutpat. Praesent sollicitudin finibus urna semper accumsan. Etiam lobortis egestas accumsan. Vestibulum quis urna et enim vulputate ullamcorper id vitae eros. Aliquam gravida purus in velit ultricies, vitae rhoncus risus sodales.',
-            };
+        props: {
+            post: {
+                type: Object,
+                default() {
+                    return {};
+                },
+            },
         },
     };
 </script>
@@ -48,6 +50,7 @@
         width: 100%;
         height: 250px;
         overflow: hidden;
+        background-size: cover;
         background-repeat: no-repeat;
     }
 

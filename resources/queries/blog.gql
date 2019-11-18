@@ -1,0 +1,7 @@
+query {
+    BlogItem(id: "blog") {
+        content {
+            _editable
+        }
+    }
+}

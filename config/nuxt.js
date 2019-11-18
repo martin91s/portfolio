@@ -40,10 +40,10 @@ module.exports = {
      ** Plugins to load before mounting the App
      */
     plugins: [
-        '~/plugins/components.js',
         '~/plugins/filters',
         { src: '~/plugins/vue-particles', ssr: false },
         { src: '~/plugins/aos' },
+        { src: '~/plugins/vue-carousel', ssr: false },
     ],
 
     /**

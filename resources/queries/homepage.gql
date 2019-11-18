@@ -1,0 +1,23 @@
+query {
+    home: HomepageItem(id: "home") {
+        id
+        content {
+            _editable
+            _uid
+            title
+            sub_title
+            skills
+        }
+    }
+
+    blog_posts: BlogpostItems {
+        items {
+            created_at
+            content {
+                image
+                title
+                content
+            }
+        }
+    }
+}

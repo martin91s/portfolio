@@ -1,7 +1,7 @@
 <template>
     <div class="skill-card">
         <div class="inner">
-            {{ skill }}
+            <img :src="skill.image" alt="skill">
         </div>
     </div>
 </template>
@@ -12,9 +12,9 @@
 
         props: {
             skill: {
-                type: String,
+                type: Object,
                 default() {
-                    return '';
+                    return {};
                 },
             },
         },

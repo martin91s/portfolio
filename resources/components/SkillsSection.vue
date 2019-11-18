@@ -19,22 +19,15 @@
 
         components: { SkillCard },
 
-        data() {
-            return {
-                skills: [
-                    'html',
-                    'css',
-                    'javascript',
-                    'vue.js',
-                    'nuxt',
-                    'sass',
-                    'less',
-                    'bootstrap',
-                    'storyblok',
-                ]
-            }
-        }
-    }
+        props: {
+            skills: {
+                type: Array,
+                default() {
+                    return [];
+                },
+            },
+        },
+    };
 </script>
 
 <style lang="scss" scoped>

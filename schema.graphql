@@ -48,6 +48,43 @@ type BlogItems {
     total: Int
 }
 
+type BlogpostComponent {
+    _editable: String
+    _uid: String
+    component: String
+    content: String
+    image: String
+    title: String
+}
+
+type BlogpostItem {
+    alternates: [Alternate]
+    content: BlogpostComponent
+    created_at: String
+    first_published_at: String
+    full_slug: String
+    group_id: Int
+    id: Int
+    is_startpage: Boolean
+    lang: String
+    meta_data: JsonScalar
+    name: String
+    parent_id: Int
+    path: String
+    position: Int
+    published_at: String
+    release_id: Int
+    slug: String
+    sort_by_date: String
+    tag_list: [String]
+    uuid: String
+}
+
+type BlogpostItems {
+    items: [BlogpostItem]
+    total: Int
+}
+
 type ContentItem {
     alternates: [Alternate]
     content: JsonScalar
@@ -77,6 +114,28 @@ type ContentItems {
     total: Int
 }
 
+type Datasource {
+    id: Int!
+    name: String!
+    slug: String!
+}
+
+type DatasourceEntries {
+    items: [DatasourceEntry!]!
+    total: Int!
+}
+
+type DatasourceEntry {
+    dimensionValue: String
+    id: Int!
+    name: String!
+    value: String!
+}
+
+type Datasources {
+    items: [Datasource!]!
+}
+
 type GenericpageComponent {
     _editable: String
     _uid: String
@@ -84,7 +143,7 @@ type GenericpageComponent {
     component: String
     content: String
     image: String
-    title: String
+    page_heading: String
 }
 
 type GenericpageItem {
@@ -115,6 +174,43 @@ type GenericpageItems {
     total: Int
 }
 
+type HomepageComponent {
+    _editable: String
+    _uid: String
+    component: String
+    skills: BlockScalar
+    sub_title: String
+    title: String
+}
+
+type HomepageItem {
+    alternates: [Alternate]
+    content: HomepageComponent
+    created_at: String
+    first_published_at: String
+    full_slug: String
+    group_id: Int
+    id: Int
+    is_startpage: Boolean
+    lang: String
+    meta_data: JsonScalar
+    name: String
+    parent_id: Int
+    path: String
+    position: Int
+    published_at: String
+    release_id: Int
+    slug: String
+    sort_by_date: String
+    tag_list: [String]
+    uuid: String
+}
+
+type HomepageItems {
+    items: [HomepageItem]
+    total: Int
+}
+
 type QueryType {
     BlogItem(
         #Can be empty or 'uuid'
@@ -129,6 +225,19 @@ type QueryType {
         resolve_relations: String
     ): BlogItem
     BlogItems(by_uuids: String, by_uuids_ordered: String, excluding_fields: String, excluding_ids: String, filter_query: JsonScalar, from_release: String, is_startpage: String, language: String, page: Int, per_page: Int, resolve_links: String, resolve_relations: String, search_term: String, sort_by: String, starts_with: String, with_tag: String): BlogItems
+    BlogpostItem(
+        #Can be empty or 'uuid'
+        find_by: String,
+        #Release id
+        from_release: Int,
+        #Slug, ID or UUID of item
+        id: ID!,
+        language: String,
+        #Can be 'story' or 'url'
+        resolve_links: String,
+        resolve_relations: String
+    ): BlogpostItem
+    BlogpostItems(by_uuids: String, by_uuids_ordered: String, excluding_fields: String, excluding_ids: String, filter_query: JsonScalar, from_release: String, is_startpage: String, language: String, page: Int, per_page: Int, resolve_links: String, resolve_relations: String, search_term: String, sort_by: String, starts_with: String, with_tag: String): BlogpostItems
     ContentNode(
         #Can be empty or 'uuid'
         find_by: String,
@@ -142,6 +251,8 @@ type QueryType {
         resolve_relations: String
     ): ContentItem
     ContentNodes(by_uuids: String, by_uuids_ordered: String, excluding_fields: String, excluding_ids: String, filter_query: JsonScalar, from_release: String, is_startpage: String, language: String, page: Int, per_page: Int, resolve_links: String, resolve_relations: String, search_term: String, sort_by: String, starts_with: String, with_tag: String): ContentItems
+    DatasourceEntries(datasource: String, dimension: String, page: Int, per_page: Int): DatasourceEntries
+    Datasources(by_ids: [String], search: String): Datasources
     GenericpageItem(
         #Can be empty or 'uuid'
         find_by: String,
@@ -155,7 +266,41 @@ type QueryType {
         resolve_relations: String
     ): GenericpageItem
     GenericpageItems(by_uuids: String, by_uuids_ordered: String, excluding_fields: String, excluding_ids: String, filter_query: JsonScalar, from_release: String, is_startpage: String, language: String, page: Int, per_page: Int, resolve_links: String, resolve_relations: String, search_term: String, sort_by: String, starts_with: String, with_tag: String): GenericpageItems
+    HomepageItem(
+        #Can be empty or 'uuid'
+        find_by: String,
+        #Release id
+        from_release: Int,
+        #Slug, ID or UUID of item
+        id: ID!,
+        language: String,
+        #Can be 'story' or 'url'
+        resolve_links: String,
+        resolve_relations: String
+    ): HomepageItem
+    HomepageItems(by_uuids: String, by_uuids_ordered: String, excluding_fields: String, excluding_ids: String, filter_query: JsonScalar, from_release: String, is_startpage: String, language: String, page: Int, per_page: Int, resolve_links: String, resolve_relations: String, search_term: String, sort_by: String, starts_with: String, with_tag: String): HomepageItems
+    Space: Space
+    Tags(starts_with: String): Tags
+}
+
+type Space {
+    domain: String!
+    id: Int!
+    languageCodes: [String]!
+    name: String!
+    version: Int!
+}
+
+type Tag {
+    name: String!
+    taggingsCount: Int!
+}
+
+type Tags {
+    items: [Tag!]!
 }
 
 
 scalar JsonScalar
+
+scalar BlockScalar
