@@ -33,13 +33,6 @@
 </script>
 
 <style lang="scss" scoped>
-    .blog-card {
-        &:hover {
-            .image {
-                transform: scale(1.1);
-            }
-        }
-    }
     .inner {
         box-shadow: 0 30px 60px -30px #000000;
         border-radius: 6px;

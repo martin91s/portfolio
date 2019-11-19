@@ -13,7 +13,7 @@
 </template>
 
 <script>
-    import AppNav from '../AppNav';
+    import AppNav from './AppNav';
     import Hamburger from './Hamburger';
 
     export default {
@@ -32,7 +32,7 @@
         right: 0;
         z-index: 20;
         padding: 20px;
-        div {
+        > div {
             color: $brand-default;
         }
     }

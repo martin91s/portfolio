@@ -1,5 +1,5 @@
 <template>
-    <div class="banner">
+    <div class="banner" v-editable="content">
         <client-only>
             <vue-particles
                 color="#404856"
@@ -20,20 +20,15 @@
             />
         </client-only>
         <div v-aos class="title">
-            <h1>
-                <page-heading :content="content" />
-            </h1>
+            <h1>{{ content.heading }}</h1>
+            <h4>{{ content.sub_heading }}</h4>
         </div>
     </div>
 </template>
 
 <script>
-    import PageHeading from './PageHeading';
-
     export default {
         name: 'banner',
-
-        components: { PageHeading },
 
         props: {
             content: {
@@ -67,6 +62,7 @@
     .title {
         z-index: 10;
         color: #ffffff;
+        text-align: center;
     }
 
     h1 {

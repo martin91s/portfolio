@@ -6,7 +6,7 @@
         type="button"
     >
         <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
+            <span class="hamburger-inner" />
         </span>
     </button>
 </template>
@@ -19,16 +19,16 @@
 
         computed: {
             ...mapState('global', [
-                'mobile_nav_visible'
+                'mobile_nav_visible',
             ]),
         },
 
         methods: {
             ...mapMutations('global', [
-                'toggleMobileNav'
+                'toggleMobileNav',
             ]),
         },
-    }
+    };
 </script>
 
 <style lang="scss" scoped>

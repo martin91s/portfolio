@@ -10,11 +10,9 @@
                         :controls="false"
                         :indicators="false"
                     >
-                        <slide>
-                            Slide 1 Content
-                        </slide>
-                        <slide>
-                            Slide 2 Content
+                        <slide v-for="testimonial in testimonials" :key="testimonial.id">
+                            <p v-html="testimonial.content" />
+                            <span>By {{ testimonial.author }}</span>
                         </slide>
                     </carousel>
                 </client-only>
@@ -26,6 +24,13 @@
 <script>
     export default {
         name: 'testimonials',
+
+        props: {
+            testimonials: {
+                type: Array,
+                required: true,
+            },
+        },
 
         data() {
             return {

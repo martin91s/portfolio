@@ -7,7 +7,7 @@
             }"
         />
         <skills-section :skills="home.content.skills" />
-        <testimonials />
+        <testimonials :testimonials="home.content.testimonials" />
         <blog-list :posts="blog_posts.items"/>
     </div>
 </template>
@@ -21,7 +21,6 @@
     import Homepage from '../queries/homepage.gql';
 
     export default {
-        name: 'homepage',
 
         components: { BlogList, Testimonials, SkillsSection, Banner },
 
@@ -29,7 +28,7 @@
             try {
                 return await async(context, Homepage);
             } catch(error) {
-                console.log(error);
+                //
             }
         },
 

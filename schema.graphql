@@ -136,50 +136,13 @@ type Datasources {
     items: [Datasource!]!
 }
 
-type GenericpageComponent {
-    _editable: String
-    _uid: String
-    banner: String
-    component: String
-    content: String
-    image: String
-    page_heading: String
-}
-
-type GenericpageItem {
-    alternates: [Alternate]
-    content: GenericpageComponent
-    created_at: String
-    first_published_at: String
-    full_slug: String
-    group_id: Int
-    id: Int
-    is_startpage: Boolean
-    lang: String
-    meta_data: JsonScalar
-    name: String
-    parent_id: Int
-    path: String
-    position: Int
-    published_at: String
-    release_id: Int
-    slug: String
-    sort_by_date: String
-    tag_list: [String]
-    uuid: String
-}
-
-type GenericpageItems {
-    items: [GenericpageItem]
-    total: Int
-}
-
 type HomepageComponent {
     _editable: String
     _uid: String
     component: String
     skills: BlockScalar
     sub_title: String
+    testimonials: BlockScalar
     title: String
 }
 
@@ -253,19 +216,6 @@ type QueryType {
     ContentNodes(by_uuids: String, by_uuids_ordered: String, excluding_fields: String, excluding_ids: String, filter_query: JsonScalar, from_release: String, is_startpage: String, language: String, page: Int, per_page: Int, resolve_links: String, resolve_relations: String, search_term: String, sort_by: String, starts_with: String, with_tag: String): ContentItems
     DatasourceEntries(datasource: String, dimension: String, page: Int, per_page: Int): DatasourceEntries
     Datasources(by_ids: [String], search: String): Datasources
-    GenericpageItem(
-        #Can be empty or 'uuid'
-        find_by: String,
-        #Release id
-        from_release: Int,
-        #Slug, ID or UUID of item
-        id: ID!,
-        language: String,
-        #Can be 'story' or 'url'
-        resolve_links: String,
-        resolve_relations: String
-    ): GenericpageItem
-    GenericpageItems(by_uuids: String, by_uuids_ordered: String, excluding_fields: String, excluding_ids: String, filter_query: JsonScalar, from_release: String, is_startpage: String, language: String, page: Int, per_page: Int, resolve_links: String, resolve_relations: String, search_term: String, sort_by: String, starts_with: String, with_tag: String): GenericpageItems
     HomepageItem(
         #Can be empty or 'uuid'
         find_by: String,

@@ -31,7 +31,7 @@
     }
 
     .inner {
-        box-shadow: 0 30px 60px -30px #000;
+        box-shadow: 0 30px 60px -30px #000000;
         padding: 50px;
         display: flex;
         align-items: center;
