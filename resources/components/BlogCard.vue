@@ -1,7 +1,9 @@
 <template>
     <div class="blog-card">
         <div class="inner">
-            <div :style="{ backgroundImage: `url(${ post.content.image })` }" class="image" />
+            <nuxt-link to="#">
+                <div :style="{ backgroundImage: `url(${ post.content.image })` }" class="image" />
+            </nuxt-link>
             <div class="content">
                 <time>
                     {{ $moment(post.created_at).format('MMMM Do YYYY') }}
@@ -37,6 +39,7 @@
         box-shadow: 0 30px 60px -30px #000000;
         border-radius: 6px;
         overflow: hidden;
+        height: 100%;
     }
 
     .image {

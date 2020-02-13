@@ -17,40 +17,20 @@
     import SkillsSection from '../components/SkillsSection';
     import Testimonials from '../components/Testimonials';
     import BlogList from '../components/BlogList';
-    import async from '../modules/async';
     import Homepage from '../queries/homepage.gql';
 
     export default {
 
         components: { BlogList, Testimonials, SkillsSection, Banner },
 
-        async asyncData(context) {
-            try {
-                return await async(context, Homepage);
-            } catch(error) {
-                //
-            }
-        },
+        async asyncData({ app }) {
+            const client = app.apolloProvider.defaultClient;
 
-        mounted() {
-            this.storyblokChange();
-        },
-
-        methods: {
-            /**
-             * Live reload for visual editor
-             */
-            storyblokChange() {
-                this.$storybridge.on(['input', 'published', 'change'], (event) => {
-                    if (event.action === 'input') {
-                        if (event.story.id === this.home.id) {
-                            this.home.content = event.story.content;
-                        }
-                    } else {
-                        window.location.reload();
-                    }
-                });
-            },
+            const { data } = await client.query({
+                prefetch: true,
+                query: Homepage,
+            });
+            return data;
         },
     };
 </script>

@@ -41,6 +41,7 @@ module.exports = {
      */
     plugins: [
         '~/plugins/filters',
+        '~/plugins/storyblok-change',
         { src: '~/plugins/vue-particles', ssr: false },
         { src: '~/plugins/aos' },
         { src: '~/plugins/vue-carousel', ssr: false },
@@ -70,7 +71,7 @@ module.exports = {
         '@nuxtjs/moment',
         ['storyblok-nuxt', {
             accessToken: 'zgkba7WhLQwrJN83BHNKGQtt',
-            cacheProvider: 'memory'
+            cacheProvider: 'memory',
         }],
     ],
 
